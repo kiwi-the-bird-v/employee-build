@@ -1,0 +1,309 @@
+.calendar>.date{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 7% 0;
+}
+.calendar.show{
+    visibility: visible;
+}
+table{
+    margin: 0 auto;
+    border-spacing: 0.6rem;
+    font-size: 1.6rem;
+    border-collapse: collapse;
+    width: 88%;
+}
+thead{
+    font-size: 1.2rem;
+}
+table td{
+    text-align: center;
+    outline: 2px solid white;
+    height: 53px;
+    width: 53px;
+    background: #F6F6F6;
+    color: #C3C3C3;
+}
+th{
+    text-align: center;
+    color: #626262;
+}
+
+.current-month{
+    background: #E5FCBF;
+    color: black;
+    cursor: pointer;
+}
+.current-month:hover,td.checked{
+    background: #91B24B;
+    color: white;
+}
+
+.today{
+    box-sizing: border-box;
+    outline: 2px dotted black;
+}
+
+.arrow{
+    border: 3px solid rgba(1,1,1,0.5);
+    border-bottom: none;
+    border-left: none;
+    display: block;
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+}
+.arrow:hover{
+    border-color: black;
+}
+.arrow-left{
+    float: left;
+    transform: rotate(-135deg) translateY(20px) translateX(-20px);
+    transition: border-color 0.4s ease;
+}
+.arrow-right{
+    float: right;
+    transform: rotate(45deg) translateY(20px) translateX(-20px);
+    transition: border-color 0.4s ease;
+}
+.date ul{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    align-items: center;
+    font-weight: bold;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Arial Narrow";
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+#employees{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 3% 8%;
+}
+ul{
+    list-style-type: none;
+}
+.empty{
+    text-align: center;
+}
+#control{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+button{
+    padding: 3%;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 1.5rem;
+    font-family: "Arial Narrow";
+}
+button[disabled]{
+    cursor: auto;
+}
+button[name='add']{
+    background: #91B24B;
+}
+button[name='remove']{
+    background: #B5B5B5;
+}
+form>ul{
+    display: grid;
+    grid-template-rows: 1fr 1fr auto 1fr 1fr;
+    background: #F6F6F6;
+}
+.field{
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+}
+.field>div{
+    background: white;
+    display: flex;
+    box-sizing: border-box;
+
+}
+.field.calendar>div{
+    flex-direction: column;
+}
+label,input,select{
+    font-size: 1.4rem;
+}
+select{
+    box-sizing: content-box;
+    cursor: pointer;
+}
+
+form label{
+    display: flex;
+    align-items: center;
+    padding: 4% 8%;
+}
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none !important;
+}
+input, select{
+    border: none;
+    outline: none;
+    padding: 4%;
+    width: 80%;
+    border-bottom: 2px dotted black;
+    margin: 0 auto;
+}
+input:disabled{
+    background: none;
+    color: black;
+}
+
+#list h1{
+    padding: 2% 0;
+}
+#list label{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+h1{
+    font-size: 1.6rem;
+    color: #626262;
+    margin: 2% 0;
+}
+#list li{
+    cursor: pointer;
+    padding: 2% 6%;
+}
+
+li.checked{
+    background: #D8D8D8;
+}
+
+#list li:hover{
+    background: #E7E7E7;
+}
+#bgr{
+    display: none;
+    position: absolute;
+    background: #3B3B3B;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+#bgr.show{
+    display: flex;
+}
+#close{
+    position: absolute;
+    top: 1rem;
+    width: auto;
+    font-size: 1.5rem;
+    background: #DCE6FF;
+    cursor: pointer;
+    right: 1rem;
+    padding: 1%;
+}
+#modal-window{
+    background: white;
+    position: relative;
+    width: 40vw;
+}
+#content{
+    padding: 5% 10%;
+}
+#content button{
+    margin: 3% 0 0;
+    background: #91B24B;
+}
+.knobs, .layer{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.switch{
+    position: relative;
+    top: 50%;
+    width: 84px;
+    height: 42px;
+    margin: -20px auto 0 6%;
+    overflow: hidden;
+}
+.switch, .switch .layer{
+    border-radius: 100px;
+}
+.checkbox{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+.knobs{
+    z-index: 2;
+}
+.layer{
+    width: 100%;
+    background-color: #DCE6FF;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+.switch .knobs:before{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 20px;
+    height: 12px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    font-size: 1.2rem;
+    padding: 9px 4px;
+    background-color: #5979D3;
+    border-radius: 50%;
+    transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.switch .checkbox:checked + .knobs:before{
+    left: 49px;
+    background-color: #91B24B;
+}
+.switch [name='gender'] ~ .knobs:before{
+    content: 'М';
+}
+.switch [name='workedStatus'] ~ .knobs:before{
+    content: 'У';
+}
+.switch [name='gender'].checkbox:checked + .knobs:before{
+    content: 'Ж';
+}
+.switch [name='workedStatus'].checkbox:checked + .knobs:before{
+    content: 'Р';
+}
+.switch .checkbox:checked ~ .layer{
+    background-color: #E5FCBF;
+}
+.switch .knobs, .switch .knobs:before, .button-1 .layer{
+    transition: 0.3s ease all;
+}
