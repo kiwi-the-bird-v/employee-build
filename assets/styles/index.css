@@ -80,10 +80,6 @@ th{
 }
 body{
     font-family: "Arial Narrow";
-    height: 100vh;
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
 }
 #employees{
     display: grid;
